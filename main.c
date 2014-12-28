@@ -70,14 +70,14 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-    if(dup2(input_fd, STDIN_FILENO) == -1)
+	if(dup2(input_fd, STDIN_FILENO) == -1)
 	{
 		int err = errno;
 		fprintf(stderr, "Cannot change the stdin file descriptor to the newly generated file descriptor:\n%s\n", strerror(err));
 		return EXIT_FAILURE;
 	}
 
-    execvp(argv[2], argv+2);
+	execvp(argv[2], argv+2);
 
 	//execvp only returns on error
 	int err = errno;
